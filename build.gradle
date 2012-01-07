@@ -3,6 +3,7 @@ buildscript {
     mavenRepo name: 'clojars', url: 'http://clojars.org/repo'
   }
   dependencies {
+    classpath 'org.clojars.myfreeweb.clojuresque:runtime:1.5.0-SNAPSHOT'
     classpath 'org.clojars.myfreeweb.clojuresque:clojuresque:1.5.0-SNAPSHOT'
   }
 }
