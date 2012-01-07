@@ -1,10 +1,9 @@
 buildscript {
   repositories {
     mavenRepo name: 'clojars', url: 'http://clojars.org/repo'
-    mavenRepo name: 'local', url: '~/.m2/repository'
   }
   dependencies {
-    classpath 'clojuresque:clojuresque:1.4.1'
+    classpath 'org.clojars.myfreeweb.clojuresque:clojuresque:1.5.0-SNAPSHOT'
   }
 }
 
@@ -13,7 +12,10 @@ subprojects {
   group = 'floatboth'
   version = '1.0.0'
 
-  apply plugin: 'clojure'
+  apply {
+    plugin 'clojure'
+    plugin 'maven'
+  }
   repositories {
     mavenCentral()
     clojarsRepo()
