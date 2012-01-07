@@ -1,0 +1,32 @@
+buildscript {
+  repositories {
+    mavenRepo name: 'clojars', url: 'http://clojars.org/repo'
+    mavenRepo name: 'local', url: '~/.m2/repository'
+  }
+  dependencies {
+    classpath 'clojuresque:clojuresque:1.4.1'
+  }
+}
+
+
+subprojects {
+  group = 'floatboth'
+  version = '1.0.0'
+
+  apply plugin: 'clojure'
+  repositories {
+    mavenCentral()
+    clojarsRepo()
+  }
+
+  dependencies {
+    compile 'org.clojure:clojure:1.3.0'
+    testCompile 'midje:midje:1.3.1'
+  }
+}
+
+project(':gradle-travis') {
+  dependencies {
+    compile project(':travis-gradle')
+  }
+}

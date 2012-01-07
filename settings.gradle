@@ -1,0 +1,3 @@
+rootProject.name = 'tradle'
+include 'gradle-travis'
+include 'travis-gradle'
