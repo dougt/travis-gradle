@@ -7,20 +7,19 @@ buildscript {
   }
 }
 
-
-subprojects {
+allprojects {
   group = 'floatboth'
   version = '1.0.0'
 
-  apply {
-    plugin 'clojure'
-    plugin 'maven'
-  }
+  apply plugin: 'clojure'
+
   repositories {
     mavenCentral()
     clojarsRepo()
   }
+}
 
+subprojects {
   dependencies {
     compile 'org.clojure:clojure:1.3.0'
     testCompile 'midje:midje:1.3.1'
@@ -31,4 +30,29 @@ project(':gradle-travis') {
   dependencies {
     compile project(':travis-gradle')
   }
+}
+
+// Aggregated documentation
+dependencies {
+  // clojuresque doesn't include clojure
+  // subprojects documentation somehow works w/ compile dep
+  clojuresque 'org.clojure:clojure:1.3.0'
+}
+
+clojuredoc.configure {
+  destinationDir = new File('autodoc')
+  // Allows subprojects which depend on others to work
+  clojureRoots = subprojects.first().sourceSets.main.clojure
+  // Source files list
+  source = files {
+    subprojects.collect {
+      it.sourceSets.main.clojure
+    }
+  }
+  compileClasspath = files {
+    subprojects.collect {
+      it.sourceSets.main.compileClasspath
+    }
+  }
+  excludeNamespace('clojure*')
 }

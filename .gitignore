@@ -1,2 +1,5 @@
 .gradle
 */build
+*/lib
+build
+autodoc

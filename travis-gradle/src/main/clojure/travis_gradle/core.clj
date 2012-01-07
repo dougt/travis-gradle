@@ -1,4 +1,4 @@
 (ns travis-gradle.core)
 
-(defn testfn [a]
+(defn testfn "doc" [a]
   (str "Hello " a))
