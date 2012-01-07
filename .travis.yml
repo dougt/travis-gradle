@@ -1,5 +1,5 @@
 ---
 before_script:
   - "wget http://repo.gradle.org/gradle/distributions/gradle-1.0-milestone-7-bin.zip"
-  - "tar xvf gradle-1.0*"
+  - "unzip gradle-1.0*"
 script: "gradle-1.0*/bin/gradle test"
